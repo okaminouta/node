@@ -2,9 +2,12 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParcer = require('body-parser');
+const mongoose = require('mongoose');
 
 const productRouts = require('./api/routs/products');
 const orderRouts = require('./api/routs/orders');
+
+mongoose.connect('mongodb+srv://okamiuta:' + process.env.MONGO_PW + '@node-test-7qi1c.mongodb.net/test');
 
 app.use(morgan('dev'));
 app.use(bodyParcer.urlencoded({extended: false}));
